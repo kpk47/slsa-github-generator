@@ -154,7 +154,7 @@ jobs:
           # NOTE: We are using the generic generator.
           directory: "${{ env.BUILDER_DIR }}"
           allow-private-repository: ${{ inputs.private-repository }}
-	  testing: true
+          testing: true
 
       - id: auth
         name: Authenticate to Google Cloud

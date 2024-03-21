@@ -165,7 +165,7 @@ jobs:
           compile-builder: "${{ inputs.compile-generator }}"
           directory: "${{ env.BUILDER_DIR }}"
           allow-private-repository: ${{ inputs.private-repository }}
-	  testing: true
+          testing: true
 
       - name: Extract subjects file metadata
         id: metadata

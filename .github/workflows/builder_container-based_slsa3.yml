@@ -190,8 +190,6 @@ jobs:
   generate-builder:
     # TODO: would it be convenient to output the builderDependency?
     # TODO: this is a no-op right now. Replace with final builder.
-    inputs:
-      testing: true
     outputs:
       builder-binary-sha256: ${{ steps.generate.outputs.sha256 }}
     needs: [detect-env, rng]
@@ -199,7 +197,7 @@ jobs:
     steps:
       - name: Generate builder binary
         id: generate
-        uses: slsa-framework/slsa-github-generator/.github/actions/generate-builder@v1.9.1-rc.0
+        uses: kpk47/slsa-github-generator/.github/actions/generate-builder@v1.9.1-rc.0
         with:
           repository: "${{ needs.detect-env.outputs.repository }}"
           ref: "${{ needs.detect-env.outputs.ref }}"
@@ -209,6 +207,7 @@ jobs:
           compile-builder: "${{ inputs.compile-builder }}"
           directory: "${{ env.BUILDER_DIR }}"
           allow-private-repository: ${{ inputs.rekor-log-public }}
+          testing: true
 
       - name: Upload builder
         uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
